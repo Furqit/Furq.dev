@@ -1,0 +1,178 @@
+@import url("https://fonts.googleapis.com/css?family=Mali");
+
+html,
+body {
+  background-color: #060606;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+  scroll-behavior: smooth;
+}
+
+.box {
+  position: absolute;
+  flex: auto;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 1%;
+  z-index: 2;
+}
+
+.box h1 {
+  color: #ffffff;
+  text-align: left;
+  font-size: 90px;
+  font-family: "Mali", sans-serif;
+  margin-bottom: -1rem;
+  animation: transitionIn 1s;
+}
+
+.box h5 {
+  color: #9f9f9f;
+  text-align: left;
+  margin-top: 15px;
+  margin-left: 5px;
+  font-size: 30px;
+  font-weight: lighter;
+  letter-spacing: 2px;
+  font-family: "Mali", sans-serif;
+  margin-bottom: 30px;
+  animation: transitionIn 1s;
+}
+
+.name {
+  color: #770000;
+  text-decoration: underline;
+}
+
+.box li {
+  display: inline-block;
+  margin: 6px;
+  margin-right: 5%;
+  list-style: none;
+}
+
+.box li a {
+  position: relative;
+  color: #9f9f9f;
+  font-size: 30px;
+  animation: transitionIn 1s;
+}
+
+.box li a::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 5px;
+  color: #ffffff;
+  font-size: 14px;
+  font-family: "Mali", sans-serif;
+  font-weight: bold;
+  border-radius: 5px;
+  opacity: 0;
+  transition: opacity 0.3s;
+  white-space: nowrap;
+}
+
+.box li a:hover::after {
+  opacity: 1;
+}
+
+.box li a:hover {
+  color: #ff8282;
+}
+
+.aboutme {
+  position: relative;
+  float: right;
+  margin: 6px;
+  font-size: 30px;
+  animation: transitionIn 1s;
+}
+
+.aboutme a {
+  color: #9f9f9f;
+}
+
+.aboutme a::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 5px;
+  color: #ffffff;
+  font-size: 14px;
+  font-family: "Mali", sans-serif;
+  font-weight: bold;
+  border-radius: 5px;
+  opacity: 0;
+  transition: opacity 0.3s;
+  white-space: nowrap;
+}
+ 
+ .aboutme a:hover::after {
+  opacity: 1;
+}
+
+ .aboutme a:hover {
+  color: #ff8282;
+}
+.ball {
+  position: relative;
+  border-radius: 100%;
+  opacity: 0.2;
+  z-index: 1;
+  animation: transitionIn 5s;
+}
+
+.coffee-plz {
+  display: inline-block;
+  position: fixed;
+  bottom: 10px;
+  left: 10px;
+  width: 20vw;
+  max-width: 250px;
+  min-width: 200px;
+  z-index: 9;
+  animation: transitionIn 1s;
+
+  img {
+    width: 100%;
+    height: auto;
+  }
+}
+
+@keyframes float {
+  0% {
+    box-shadow: 0 5px 15px 0px rgba(0, 0, 0, 0.6);
+    transform: translatey(0px);
+  }
+
+  50% {
+    box-shadow: 0 25px 15px 0px rgba(0, 0, 0, 0.2);
+    transform: translatey(-20px);
+  }
+
+  100% {
+    box-shadow: 0 5px 15px 0px rgba(0, 0, 0, 0.6);
+    transform: translatey(0px);
+  }
+}
+
+@keyframes transitionIn {
+  from {
+    opacity: 0;
+    filter: blur(1px);
+  }
+
+  to {
+    opacity: 1;
+    filter: blur(0px);
+  }
+}
