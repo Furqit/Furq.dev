@@ -115,7 +115,9 @@ a:hover {
   gap: 20px;
   padding: 20px;
 }
-
+.project-card-link {
+  text-decoration: none;
+}
 .project-card {
   background-color: #222;
   width: 300px;
