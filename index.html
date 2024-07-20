@@ -5,32 +5,136 @@
     <meta charset="UTF-8" />
     <meta
       name="viewport"
-      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <script
-      src="https://code.iconify.design/iconify-icon/1.0.1/iconify-icon.min.js"></script>
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <script src="https://code.iconify.design/iconify-icon/1.0.1/iconify-icon.min.js"></script>
     <title>Furq Persona</title>
     <link rel="stylesheet" href="css/style.css" />
     <script defer src="js/app.js"></script>
   </head>
-  <body oncontextmenu="return false">
-    <div class="box">
-      <h1>
-        Hi, I'm <span class="name">Furq</span>!
-      </h1>
-      <h5>Freelancer</h5><p class="aboutme"><a data-tooltip="About Me" href="./aboutme"><iconify-icon icon="mdi:about"></iconify-icon></a></p>
-          <li>
-            <a href="https://discord.com/users/625710207565037568" target="_blank" data-tooltip="Discord"><iconify-icon icon="ic:baseline-discord"></iconify-icon></a>
-          </li>
-          <li>
-            <a href="https://github.com/Furq07" target="_blank" data-tooltip="GitHub"><iconify-icon icon="mdi:github"></iconify-icon></a>
-          </li>
-          <li>
-            <a href="https://www.fiverr.com/furqanahmedk" target="_blank" data-tooltip="Fiverr"><iconify-icon icon="jam:fiverr-circle"></iconify-icon></a>
-          </li>
-        </a>
+  <body>
+    <div class="background"></div>
+    <div id="cards">
+      <div class="card">
+        <div class="card-content">
+          <div class="card-info-wrapper">
+            <div class="card-info">
+              <div class="card-info-title">
+                <h2 class="intro">Hi, I'm Furq!</h2>
+                <h3 class="intro-tag">Hobbyist</h3>
+                <h3>Who am I?</h3>
+                <h4>
+                  A computer science student. Currently, I'm expanding my
+                  skillset with Python, Java, and Kotlin, focusing on Minecraft
+                  server and mod development. It's a great way to combine
+                  creativity with technical skills!
+                </h4>
+                <h4>
+                  Feel free to reach out if you'd like to connect and chat about
+                  coding, Minecraft, or anything that piques your curiosity!
+                </h4>
+                <div class="icons">
+                  <li class="discord">
+                    <a
+                      href="https://discord.com/users/625710207565037568"
+                      target="_blank"
+                      data-tooltip="Discord"
+                      ><iconify-icon icon="ic:baseline-discord"></iconify-icon
+                    ></a>
+                  </li>
+                  <li class="github">
+                    <a
+                      href="https://github.com/Furq07"
+                      target="_blank"
+                      data-tooltip="GitHub"
+                      ><iconify-icon icon="mdi:github"></iconify-icon
+                    ></a>
+                  </li>
+                  <li class="fiverr">
+                    <a
+                      href="https://www.fiverr.com/furqanahmedk"
+                      target="_blank"
+                      data-tooltip="Fiverr"
+                      ><iconify-icon icon="jam:fiverr-circle"></iconify-icon
+                    ></a>
+                  </li>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-      <a class="coffee-plz" href="https://www.buymeacoffee.com/furq"><img
-          src="https://img.buymeacoffee.com/button-api/?text=Buy me a Coffee&emoji=☕&slug=furq&button_colour=FF5F5F&font_colour=ffffff&font_family=Cookie&outline_colour=000000&coffee_colour=FFDD00"
-          loading="lazy" alt="Buy me a Coffee" /></a>
-    </body>
-  </html>
+      <div class="card" id="projects">
+        <div class="card-content">
+          <div class="card-info-wrapper">
+            <div class="card-info">
+              <div class="card-info-title">
+                <h3>Projects:</h3>
+                <div class="projects-container">
+                  <a
+                    class="project-card-link"
+                    href="https://www.fiverr.com/furqanahmedk"
+                    target="_blank"
+                    data-tooltip="Fiverr"
+                  >
+                    <div class="project-card">
+                      <h3>Freelance Projects</h3>
+                      <h4>
+                        I have worked on variety of projects through my
+                        freelancing endeavors. For a comprehensive overview,
+                        please visit my Fiverr profile.
+                      </h4>
+                    </div>
+                  </a>
+                  <a
+                    class="project-card-link"
+                    href="https://store.cobblemonislands.com"
+                    target="_blank"
+                    data-tooltip="Cobblemon Islands"
+                  >
+                    <div class="project-card">
+                      <h3>Cobblemon Islands</h3>
+                      <h4>
+                        Currently, I serve as the Server Manager for Cobblemon
+                        Islands, overseeing the server's operations and ensuring
+                        a smooth gaming experience for all players.
+                      </h4>
+                    </div>
+                  </a>
+                  <a
+                    class="project-card-link"
+                    href="https://modrinth.com/plugin/vinyls"
+                    target="_blank"
+                    data-tooltip="Vinyls"
+                  >
+                    <div class="project-card">
+                      <h3>Vinyls</h3>
+                      <h4>
+                        A spigot plugin that adds the ability to create
+                        configurable custom music discs using resource packs.
+                      </h4>
+                    </div></a
+                  >
+                  <a
+                    class="project-card-link"
+                    href="https://modrinth.com/plugin/unvoidable"
+                    target="_blank"
+                    data-tooltip="UnVoidable"
+                  >
+                    <div class="project-card">
+                      <h3>UnVoidable</h3>
+                      <h4>
+                        A spigot plugin that that ensures immediate
+                        teleportation of players to a designated safe spot.
+                      </h4>
+                    </div>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
