@@ -1,140 +1,121 @@
 <!DOCTYPE html>
 
-<html>
-  <head>
-    <meta charset="UTF-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
-    />
-    <script src="https://code.iconify.design/iconify-icon/1.0.1/iconify-icon.min.js"></script>
-    <title>Furq Persona</title>
-    <link rel="stylesheet" href="css/style.css" />
-    <script defer src="js/app.js"></script>
-  </head>
-  <body>
-    <div class="background"></div>
-    <div id="cards">
-      <div class="card">
-        <div class="card-content">
-          <div class="card-info-wrapper">
-            <div class="card-info">
-              <div class="card-info-title">
-                <h2 class="intro">Hi, I'm Furq!</h2>
-                <h3 class="intro-tag">Hobbyist</h3>
-                <h3>Who am I?</h3>
-                <h4>
-                  A computer science student. Currently, I'm expanding my
-                  skillset with Python, Java, and Kotlin, focusing on Minecraft
-                  server and mod development. It's a great way to combine
-                  creativity with technical skills!
-                </h4>
-                <h4>
-                  Feel free to reach out if you'd like to connect and chat about
-                  coding, Minecraft, or anything that piques your curiosity!
-                </h4>
-                <div class="icons">
-                  <li class="discord">
-                    <a
-                      href="https://discord.com/users/625710207565037568"
-                      target="_blank"
-                      data-tooltip="Discord"
-                      ><iconify-icon icon="ic:baseline-discord"></iconify-icon
-                    ></a>
-                  </li>
-                  <li class="github">
-                    <a
-                      href="https://github.com/Furq07"
-                      target="_blank"
-                      data-tooltip="GitHub"
-                      ><iconify-icon icon="mdi:github"></iconify-icon
-                    ></a>
-                  </li>
-                  <li class="fiverr">
-                    <a
-                      href="https://www.fiverr.com/furqanahmedk"
-                      target="_blank"
-                      data-tooltip="Fiverr"
-                      ><iconify-icon icon="jam:fiverr-circle"></iconify-icon
-                    ></a>
-                  </li>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Jersey+10&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css" />
+  <script src="js/script.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Hi, I'm Furq</title>
+</head>
+<body>
+  <div id="loading-screen">
+    <img src="assets/cat.gif" alt="Loading Cat" class="loading-cat">
+    <div class="loading-text">Loading...</div>
+  </div>
+  <div class="background"></div>
+  <div class="main">
+    <p class="intro">Hi, I'm</p>
+    <p class="me">Furq</p>
+    <p class="minecraft">
+      <span class="default">A Minecraft</span>
+      <span class="alternate">A Hobbyist</span>
+    </p>
+    <p class="stuff">
+      <span class="default">Server Specialist</span>
+      <span class="alternate">Modder</span>
+    </p>
+  </div>
+  <div class="info">
+    <img src="assets/table.png" alt="Table" class="table">
+    <img src="assets/chair.png" alt="Chair" class="chair">
+    <img src="assets/cat.gif" alt="Cat" class="cat">
+    <div class="items">
+      <div class="item-wrapper">
+        <div class="tooltip">Projects</div>
+        <img src="assets/blueprint.png" alt="blueprint" class="item">
+        <img src="assets/blueprint-outline.png" alt="blueprint outline" class="item-outline">
+        <div class="popup-menu projects-menu">
+          <ul>
+            <li>
+              <a href="https://cobblemonislands.com" target="_blank">
+                <img src="assets/project1.png" alt="Project 1">
+                <div class="menu-item-content">
+                  <h3>Minecraft Server Manager <span class="project-date">2023-Now</span></h3>
+                  <p class="project-company">At Cobblemon Islands</p>
+                  <p>Created and currently managing Cobblemon Islands, one of the largest Cobblemon servers.</p>
                 </div>
-              </div>
-            </div>
-          </div>
+              </a>
+            </li>
+            <li>
+              <a href="https://fiverr.com/furqanahmedk" target="_blank">
+                <img src="assets/project2.png" alt="Project 1">
+                <div class="menu-item-content">
+                  <h3>Freelance Projects <span class="project-date">2020-Now</span></h3>
+                  <p class="project-company">Various Clients</p>
+                  <p>Worked on numerous Minecraft server projects including custom plugins, optimization, and server management for various clients worldwide.</p>
+                </div>
+              </a>
+            </li>
+          </ul>
         </div>
       </div>
-      <div class="card" id="projects">
-        <div class="card-content">
-          <div class="card-info-wrapper">
-            <div class="card-info">
-              <div class="card-info-title">
-                <h3>Projects:</h3>
-                <div class="projects-container">
-                  <a
-                    class="project-card-link"
-                    href="https://www.fiverr.com/furqanahmedk"
-                    target="_blank"
-                    data-tooltip="Fiverr"
-                  >
-                    <div class="project-card">
-                      <h3>Freelance Projects</h3>
-                      <h4>
-                        I have worked on variety of projects through my
-                        freelancing endeavors. For a comprehensive overview,
-                        please visit my Fiverr profile.
-                      </h4>
-                    </div>
-                  </a>
-                  <a
-                    class="project-card-link"
-                    href="https://store.cobblemonislands.com"
-                    target="_blank"
-                    data-tooltip="Cobblemon Islands"
-                  >
-                    <div class="project-card">
-                      <h3>Cobblemon Islands</h3>
-                      <h4>
-                        Currently, I serve as the Server Manager for Cobblemon
-                        Islands, overseeing the server's operations and ensuring
-                        a smooth gaming experience for all players.
-                      </h4>
-                    </div>
-                  </a>
-                  <a
-                    class="project-card-link"
-                    href="https://modrinth.com/plugin/vinyls"
-                    target="_blank"
-                    data-tooltip="Vinyls"
-                  >
-                    <div class="project-card">
-                      <h3>Vinyls</h3>
-                      <h4>
-                        A spigot plugin that adds the ability to create
-                        configurable custom music discs using resource packs.
-                      </h4>
-                    </div></a
-                  >
-                  <a
-                    class="project-card-link"
-                    href="https://modrinth.com/plugin/unvoidable"
-                    target="_blank"
-                    data-tooltip="UnVoidable"
-                  >
-                    <div class="project-card">
-                      <h3>UnVoidable</h3>
-                      <h4>
-                        A spigot plugin that that ensures immediate
-                        teleportation of players to a designated safe spot.
-                      </h4>
-                    </div>
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+      <div class="item-wrapper">
+        <div class="tooltip">Discord</div>
+        <img src="assets/walkie.png" alt="walkie" class="item">
+        <a href="https://discord.com/users/625710207565037568" target="_blank">
+        <img src="assets/walkie-outline.png" alt="walkie outline" class="item-outline">
+      </a>
+      </div>
+      <div class="item-wrapper">
+        <div class="tooltip">Fiverr</div>
+        <img src="assets/laptop.png" alt="laptop" class="item">
+        <a href="https://www.fiverr.com/furqanahmedk" target="_blank">
+        <img src="assets/laptop-outline.png" alt="laptop outline" class="item-outline">
+      </a>
       </div>
     </div>
-  </body>
+    
+    <div class="item-wrapper cardboard-item">
+      <div class="tooltip">Open Source Projects</div>
+      <img src="assets/cardboard.png" alt="cardboard" class="item">
+      <img src="assets/cardboard-outline.png" alt="cardboard outline" class="item-outline">
+      <div class="popup-menu cardboard-menu">
+        <ul>
+          <li>
+            <a href="https://github.com/Furqit/HoloDisplays" target="_blank">
+              <img src="assets/opensource1.png" alt="Open Source 1">
+              <div class="menu-item-content">
+                <h3>HoloDisplays</h3>
+                <p>A powerful packet-based hologram system built with Minecraft's display entities for better performance and flexibility.</p>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a href="https://github.com/Furqit/ResourcePackCached" target="_blank">
+              <img src="assets/opensource2.png" alt="Open Source 2">
+              <div class="menu-item-content">
+                <h3>ResourcePackCached</h3>
+                <p>Optimizes server resource pack handling by caching, reusing across sessions, and eliminating redundant loading and unloading.</p>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a href="https://github.com/Furqit/Vinyls" target="_blank">
+              <img src="assets/opensource3.png" alt="Open Source 3">
+              <div class="menu-item-content">
+                <h3>Vinyls</h3>
+                <p>Optimizes server resource pack handling by caching, reusing across sessions, and eliminating redundant loading and unloading.</p>
+              </div>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  </div>
+</body>
 </html>
