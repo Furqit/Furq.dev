@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', function() {
         if (e.ctrlKey) {
             e.preventDefault();
         }
-    }, { passive: false });
+    }, { passive: true });
 
     const elements = ['.minecraft', '.stuff'].map(selector => 
         document.querySelector(selector)
@@ -53,6 +53,13 @@ document.addEventListener('DOMContentLoaded', function() {
             cursor.style.top = e.clientY + 'px';
         }
     });
+
+    document.addEventListener('touchmove', (e) => {
+        if (!lastHighlightedElement && e.touches[0]) {
+            cursor.style.left = e.touches[0].clientX + 'px';
+            cursor.style.top = e.touches[0].clientY + 'px';
+        }
+    }, { passive: true });
 
     function updateCursorPosition(element) {
         const rect = element.getBoundingClientRect();
@@ -102,7 +109,7 @@ document.addEventListener('DOMContentLoaded', function() {
         .then(() => {
             setTimeout(() => {
                 document.body.classList.add('loaded');
-            }, 500);
+            }, 5000);
         })
         .catch(error => {
             console.error('Error loading resources:', error);
@@ -133,6 +140,16 @@ document.addEventListener('DOMContentLoaded', function() {
             closeAllMenus();
             menu.classList.toggle('active');
             tooltip.style.opacity = menu.classList.contains('active') ? '0' : '';
+        });
+
+        button.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                const menu = button.querySelector('.popup-menu');
+                const tooltip = button.querySelector('.tooltip');
+                closeAllMenus();
+                menu.classList.toggle('active');
+                tooltip.style.opacity = menu.classList.contains('active') ? '0' : '';
+            }
         });
     });
 
