@@ -2,16 +2,10 @@ body,
 html {
   margin: 0;
   padding: 0;
-  background: url("../assets/floor.png") no-repeat bottom center fixed;
-  background-color: #131313;
+  background: #131313 url("../assets/floor.png") no-repeat bottom center fixed;
   min-height: 100vh;
   cursor: none;
   overflow: hidden;
-  -webkit-touch-callout: none;
-  -webkit-user-select: none;
-  -khtml-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
   user-select: none;
   overscroll-behavior: none;
   touch-action: none;
@@ -45,21 +39,62 @@ p {
   margin-left: 45px;
 }
 
-.minecraft {
+.minecraft, .stuff {
   position: relative;
   overflow: hidden;
-  height: 30px;
-  font-size: 30px;
   text-align: right;
-  margin-right: 4px;
-  margin-top: 3px;
   width: fit-content;
   margin-left: auto;
+  margin-right: 4px;
   display: flex;
   flex-direction: column;
+  transition: opacity 0.3s ease;
 }
 
-.minecraft span {
+.minecraft {
+  height: 30px;
+  font-size: 30px;
+  margin-top: 3px;
+}
+
+.particle {
+  pointer-events: none;
+  position: absolute;
+  background: white;
+  border-radius: 50%;
+  opacity: 0;
+  animation: particle-animation 0.8s ease-out forwards;
+}
+
+@keyframes particle-animation {
+  0% {
+      transform: scale(0) translate(0, 0);
+      opacity: 1;
+  }
+  100% {
+      transform: scale(1) translate(var(--tx), var(--ty));
+      opacity: 0;
+  }
+}
+
+.text-change {
+  animation: text-flash 0.5s ease-out;
+}
+
+@keyframes text-flash {
+  0% {
+      opacity: 0.3;
+  }
+  50% {
+      opacity: 1;
+      text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+  }
+  100% {
+      opacity: 1;
+  }
+}
+
+.minecraft span, .stuff span {
   position: static;
   display: block;
   transition: transform 0.5s ease;
@@ -71,51 +106,40 @@ p {
   margin-top: -58px;
 }
 
-.minecraft.show-alternate .default {
-  transform: translateY(100%);
-}
-
+.minecraft.show-alternate .default,
 .minecraft.show-alternate .alternate {
   transform: translateY(100%);
 }
 
-.minecraft.show-alternate + .stuff {
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
 .stuff {
-  position: relative;
-  overflow: hidden;
   height: 20px;
   font-size: 20px;
-  text-align: right;
-  margin-right: 4px;
   opacity: 1;
-  transition: opacity 0.3s ease;
-  width: fit-content;
-  margin-left: auto;
-  display: flex;
-  flex-direction: column;
 }
 
-.stuff span {
-  position: static;
-  display: block;
-  transition: transform 0.5s ease;
-  text-align: right;
-  height: 100%;
+.stuff.hidden {
+  opacity: 0;
+  pointer-events: none;
 }
 
 .stuff .alternate {
   margin-top: -38px;
 }
 
-.stuff.show-alternate .default {
+.stuff.show-alternate .default,
+.stuff.show-alternate .alternate {
   transform: translateY(100%);
 }
 
-.stuff.show-alternate .alternate {
+.stuff.hidden.show-alternate .default {
+  display: none !important;
+}
+.stuff.hidden.show-alternate .alternate {
+  display: block !important;
+  transform: translateY(-100%) !important;
+}
+
+.stuff.hidden:not(.show-alternate) span {
   transform: translateY(100%);
 }
 

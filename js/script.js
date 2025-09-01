@@ -1,51 +1,85 @@
 document.addEventListener('DOMContentLoaded', function() {
-    document.addEventListener('keydown', function(e) {
-        if (e.ctrlKey && (e.key === '+' || e.key === '-' || e.key === '=')) {
-            e.preventDefault();
-        }
-    });
-
-    document.addEventListener('wheel', function(e) {
-        if (e.ctrlKey) {
-            e.preventDefault();
-        }
-    }, { passive: true });
-
-    const elements = ['.minecraft', '.stuff'].map(selector => 
-        document.querySelector(selector)
+    document.addEventListener('keydown', e => 
+        e.ctrlKey && ['+', '-', '='].includes(e.key) && e.preventDefault()
     );
+
+    document.addEventListener('wheel', e => 
+        e.ctrlKey && e.preventDefault()
+    , { passive: true });
+
+    const minecraft = document.querySelector('.minecraft');
+    const stuff = document.querySelector('.stuff');
     
-    elements.forEach(element => {
-        element.addEventListener('click', () => {
-            element.classList.add('show-alternate');
-        });
+    function createParticles(element, count = 10) {
+        const rect = element.getBoundingClientRect();
         
-        element.addEventListener('mouseleave', () => {
-            element.classList.remove('show-alternate');
-        });
-    });
+        for (let i = 0; i < count; i++) {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            
+            const x = Math.random() * rect.width;
+            const y = Math.random() * rect.height;
+            const tx = (Math.random() - 0.5) * 100;
+            const ty = (Math.random() - 0.5) * 100;
+            
+            particle.style.width = '2px';
+            particle.style.height = '2px';
+            particle.style.left = x + 'px';
+            particle.style.top = y + 'px';
+            particle.style.setProperty('--tx', `${tx}px`);
+            particle.style.setProperty('--ty', `${ty}px`);
+            
+            element.appendChild(particle);
+            
+            setTimeout(() => particle.remove(), 800);
+        }
+    }
+
+    let state = 0;
+    function cycleText() {
+        switch(state) {
+            case 0:
+                minecraft.classList.add('text-change');
+                minecraft.classList.add('show-alternate');
+                stuff.classList.add('hidden');
+                setTimeout(() => {
+                    stuff.classList.remove('show-alternate');
+                }, 500);
+                createParticles(minecraft);
+                break;
+            case 1:
+                minecraft.classList.add('text-change');
+                stuff.classList.add('text-change');
+                minecraft.classList.remove('show-alternate');
+                stuff.classList.remove('show-alternate');
+                stuff.classList.remove('hidden');
+                createParticles(minecraft);
+                createParticles(stuff);
+                break;
+            case 2:
+                stuff.classList.add('text-change');
+                stuff.classList.add('show-alternate');
+                stuff.classList.remove('hidden');
+                createParticles(stuff);
+                break;
+        }
+
+        setTimeout(() => {
+            minecraft.classList.remove('text-change');
+            stuff.classList.remove('text-change');
+        }, 500);
+
+        state = (state + 1) % 3;
+    }
+
+    setInterval(cycleText, 5000);
+    cycleText();
 
     const cursor = document.createElement('div');
     cursor.classList.add('cursor');
     document.body.appendChild(cursor);
 
     let lastHighlightedElement = null;
-    
-    const clickables = document.querySelectorAll('.minecraft, .stuff');
-    clickables.forEach(element => {
-        element.addEventListener('mouseenter', () => {
-            cursor.classList.add('highlight');
-            lastHighlightedElement = element;
-            updateCursorPosition(element);
-        });
-        
-        element.addEventListener('mouseleave', () => {
-            cursor.classList.remove('highlight');
-            cursor.style.width = '10px';
-            cursor.style.height = '10px';
-            lastHighlightedElement = null;
-        });
-    });
 
     document.addEventListener('mousemove', (e) => {
         if (!lastHighlightedElement) {
@@ -69,41 +103,34 @@ document.addEventListener('DOMContentLoaded', function() {
         cursor.style.top = (rect.top + rect.height/2) + 'px';
     }
 
-    const preloadImages = () => {
-        const images = document.querySelectorAll('img');
-        const imagePromises = Array.from(images).map(img => {
-            return new Promise((resolve, reject) => {
-                if (img.complete) {
-                    resolve();
-                } else {
+    const preloadImages = () => 
+        Promise.all(
+            Array.from(document.querySelectorAll('img')).map(img => 
+                img.complete ? Promise.resolve() : new Promise((resolve, reject) => {
                     img.addEventListener('load', resolve);
                     img.addEventListener('error', reject);
-                }
-            });
-        });
-        return Promise.all(imagePromises);
-    };
+                })
+            )
+        );
 
-    const preloadFonts = () => {
-        return document.fonts.ready.then(() => {
-            return new Promise((resolve) => {
-                if (document.fonts.check('1em "Jersey 10"')) {
+    const preloadFonts = () => 
+        document.fonts.ready.then(() => 
+            document.fonts.check('1em "Jersey 10"') ? 
+            Promise.resolve() : 
+            new Promise(resolve => {
+                const testElement = document.createElement('span');
+                Object.assign(testElement.style, {
+                    fontFamily: 'Jersey 10',
+                    visibility: 'hidden'
+                });
+                testElement.textContent = 'Test';
+                document.body.appendChild(testElement);
+                document.fonts.onloadingdone = () => {
+                    document.body.removeChild(testElement);
                     resolve();
-                } else {
-                    const testElement = document.createElement('span');
-                    testElement.style.fontFamily = 'Jersey 10';
-                    testElement.style.visibility = 'hidden';
-                    testElement.textContent = 'Test';
-                    document.body.appendChild(testElement);
-                    
-                    document.fonts.onloadingdone = () => {
-                        document.body.removeChild(testElement);
-                        resolve();
-                    };
-                }
-            });
-        });
-    };
+                };
+            })
+        );
 
     Promise.all([preloadImages(), preloadFonts()])
         .then(() => {
